@@ -1,0 +1,32 @@
+{
+  "name": "cms",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@codemirror/view": "^6.9.3",
+    "@strapi/plugin-i18n": "4.8.2",
+    "@strapi/strapi": "4.8.2",
+    "better-sqlite3": "8.0.1"
+  },
+  "author": {
+    "name": "Dexter"
+  },
+  "strapi": {
+    "uuid": "fb712a85-1042-4903-ad38-9b1792e1ecaf"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "invariant": "^2.2.4"
+  }
+}

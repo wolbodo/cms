@@ -1,0 +1,22 @@
+version: '3.4'
+
+networks:
+  external:
+    name: proxy_default
+
+volumes:
+  website-db:
+
+services:
+  cms:
+    image: ghcr.io/wolbodo/cms:main
+    env_file: .env
+    environment:
+      PORT: 80
+      VIRTUAL_HOST: cms.wolbodo.nl
+      CERT_NAME: wildcard
+    networks: [external, default]
+    expose:
+      - 80
+    volumes:
+      - website-db:/usr/src/app/.tmp
