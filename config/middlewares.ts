@@ -1,7 +1,5 @@
 export default [
-  {
-    resolve: 'src/middlewares/members-login',
-  },
+  'global::members-login',
   'strapi::errors',
   'strapi::security',
   'strapi::cors',
