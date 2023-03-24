@@ -1,6 +1,6 @@
-const path = require('path');
+import path from 'path';
 
-module.exports = ({ env }) => {
+export default ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
   const connections = {
@@ -30,7 +30,7 @@ module.exports = ({ env }) => {
       connection: {
         connectionString: env('DATABASE_URL'),
         host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 5432),
+        port: env.int('DATABASE_PORT', 3306),
         database: env('DATABASE_NAME', 'strapi'),
         user: env('DATABASE_USERNAME', 'strapi'),
         password: env('DATABASE_PASSWORD', 'strapi'),
@@ -53,6 +53,7 @@ module.exports = ({ env }) => {
       connection: {
         filename: path.join(
           __dirname,
+          '..',
           '..',
           env('DATABASE_FILENAME', 'data.db')
         ),

@@ -1,4 +1,7 @@
-module.exports = [
+export default [
+  {
+    resolve: 'src/middlewares/members-login',
+  },
   'strapi::errors',
   'strapi::security',
   'strapi::cors',
