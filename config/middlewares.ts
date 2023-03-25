@@ -1,7 +1,7 @@
 export default [
-  'global::members-login',
   'strapi::errors',
   'strapi::security',
+  'global::members-login',
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',

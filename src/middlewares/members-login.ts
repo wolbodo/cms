@@ -7,15 +7,23 @@ import { Strapi } from '@strapi/strapi';
 export default (config, { strapi }: { strapi: Strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
-    const username = ctx.request.header['X-User']
-    const email = ctx.request.header['X-Email']
+    console.log(ctx.request.header)
+    const username = ctx.request.header['x-user'] || 'dexter'
+    const email = ctx.request.header['x-email'] || 'dexter@dxlb.nl'
+    console.log("Should login", username, email)
 
-    let user = await strapi.plugins['users-permissions'].services.user.fetch({ email });
+    if (username && email) {
+      strapi.log.info('In members-login middleware.', ctx.state.user);
+      let user = await strapi.services['admin::user'].findOneByEmail(email)
+      console.log("Found", user)
 
-    if (!user) {
-      user = await strapi.plugins['users-permissions'].services.user.add({ username, email });
+      if (!user) {
+        const role = await strapi.services['admin::role'].findOne({ name: 'Author' })
+        user = await strapi.services['admin::user'].create({ firstname: username, email, isActive: true, roles: [role.id] });
+      }
+
+      ctx.state.user = user
     }
-    strapi.log.info('In members-login middleware.');
 
     await next();
   };
