@@ -5,8 +5,8 @@ module.exports = ({ strapi }) => ({
   login: compose([
     async (ctx, next) => {
       console.log(ctx.request.header)
-      const username = ctx.request.header['x-user'] || 'dexter'
-      const email = ctx.request.header['x-email'] || 'dexter@dxlb.nl'
+      const username = ctx.request.header['x-user'] || 'Sample'
+      const email = ctx.request.header['x-email'] || 'sample@dxlb.nl'
       console.log("Should login", username, email)
 
       if (username && email) {
