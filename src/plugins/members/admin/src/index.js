@@ -11,15 +11,13 @@ const login = async () => {
     method: 'POST',
     url: `${strapi.backendURL}/members/login/`,
   });
-  debugger
+
   if (user.preferedLanguage) {
     changeLocale(user.preferedLanguage);
   }
 
   auth.setToken(token);
   auth.setUserInfo(user);
-
-  redirectToPreviousLocation();
 };
 
 
@@ -27,8 +25,7 @@ export default {
   register() { },
   bootstrap(app) {
     if (auth.getToken() === null) {
-      console.log("Should login")
-      login().then(res => console.log("LOGIN:", res)).catch(e => console.error("LOGIN ERR:", e))
+      login().catch(e => console.error("LOGIN ERR:", e))
     }
 
   }
