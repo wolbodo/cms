@@ -10,10 +10,11 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.8.2",
-    "@strapi/strapi": "4.8.2",
-    "better-sqlite3": "8.0.1",
-    "pg": "^8.10.0"
+    "@strapi/plugin-i18n": "4.9",
+    "@strapi/strapi": "4.9",
+    "better-sqlite3": "8.2",
+    "pg": "^8.10.0",
+    "strapi-plugin-react-editorjs": "^2.0.2"
   },
   "author": {
     "name": "A Strapi developer"

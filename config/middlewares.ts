@@ -1,7 +1,15 @@
 export default [
   'strapi::errors',
-  // 'global::members-login',
-  'strapi::security',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        directives: {
+          'img-src': ['*'],
+        },
+      }
+    },
+  },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',
