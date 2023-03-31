@@ -5,18 +5,29 @@ networks:
     name: proxy_default
 
 volumes:
-  website-db:
+  cms-db:
 
 services:
   cms:
     image: ghcr.io/wolbodo/cms:main
     env_file: .env
+    depends_on:
+      - db
     environment:
       PORT: 80
       VIRTUAL_HOST: cms.wolbodo.nl
       CERT_NAME: wildcard
+      NODE_ENV: production
     networks: [external, default]
     expose:
       - 80
+
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    command: postgres
+    environment:
+      POSTGRES_INITDB_ARGS: --data-checksums
+    env_file: .env
     volumes:
-      - website-db:/usr/src/app/.tmp
+      - cms-db:/var/lib/postgresql/data
